@@ -1,0 +1,8 @@
+(dirs *)
+
+(executables
+ (public_names day1 day2 day3))
+
+(env
+  (dev
+    (flags (:standard -warn-error -A))))
