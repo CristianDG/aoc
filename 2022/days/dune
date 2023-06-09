@@ -1,7 +1,7 @@
 (dirs *)
 
 (executables
- (public_names day1 day2 day3))
+ (public_names day1 day2 day3 day4))
 
 (env
   (dev
