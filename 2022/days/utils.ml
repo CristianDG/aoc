@@ -1,4 +1,6 @@
 
+let is_digit = function '0' .. '9' -> true | _ -> false
+
 let read_file path : string list =
   let ic = open_in path in
   let lines : string list ref = ref [] in
