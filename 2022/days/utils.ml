@@ -9,11 +9,7 @@ let read_file path : string list =
     match In_channel.input_line ic with
     | Some (line) -> lines := List.append !lines [line]
     | None -> running := false;
-  done; !lines
-
-(* 
-let input_line_opt ic: string option =
-  try Some (input_line ic)
-  with End_of_file -> None
- *)
+  done; 
+  close_in ic;
+  !lines
 
