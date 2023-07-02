@@ -1,10 +1,6 @@
 
 let input_stream = Utils.read_file "./inputs/day6-input.txt" |> List.to_seq |> Seq.concat_map String.to_seq
 
-(* NOTE: fazendo de uma forma não otimal mesmo já que aparentemente minha cabeça não consegue conceber algo mais performante *)
-
-(* TODO: encontrar a primeira sequencia de quatro caracteres onde cada caractere é diferente em uma determinada sequencia de items *)
-
 let is_start_of_packet lst =
   match lst with
   | a :: b :: c :: d :: _ ->
