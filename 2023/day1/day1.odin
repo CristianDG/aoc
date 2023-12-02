@@ -7,12 +7,12 @@ import "core:unicode/utf8"
 import "core:unicode"
 import "core:slice"
 
-FILE :: #load("./input.txt", string)
+INPUT :: #load("./input.txt", string)
 DEBUG :: false
 
 part1 :: proc() {
   total := 0
-  for line in str.split_lines(FILE) {
+  for line in str.split_lines(INPUT) {
     number_runes := [dynamic]rune{}
     for c in line {
       if unicode.is_digit(c) {
@@ -81,6 +81,8 @@ match_digit_in_line :: proc(s, substr: string, digit: int) -> [dynamic]Match {
     temp := s
     count :=  str.count(temp, substr)
 
+    when DEBUG { fmt.println("COUNT", substr, count) }
+
     for i := 0; i < count; i += 1 {
       new_match : Match
       new_match.digit = digit
@@ -88,8 +90,7 @@ match_digit_in_line :: proc(s, substr: string, digit: int) -> [dynamic]Match {
       new_match.start_idx = u8(idx)
 
       append(&result, new_match)
-
-      temp, _ = str.replace(temp, substr, " ", 1)
+      temp, _ = str.replace(temp, substr, str.repeat(" ", len(substr)), 1) 
     }
   }
 
@@ -121,7 +122,7 @@ MATCH_TABLE : []struct{ s: string, value: int } : {
 
 part2 :: proc() {
   total := 0
-  for line in str.split_lines(FILE) {
+  for line in str.split_lines(INPUT) {
     if line == "" { continue }
 
     line_digits := [dynamic]Match {}
