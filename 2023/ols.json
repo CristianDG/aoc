@@ -1,0 +1,5 @@
+{
+  "collections": [
+		{ "name": "dependencies", "path": "./dependencies" },
+	]
+}
